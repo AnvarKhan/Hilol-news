@@ -1,0 +1,252 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zxx">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Hilol Academy</title>
+    <!-- plugin css for this page -->
+    <link
+      rel="stylesheet"
+      href="{% static './vendors/mdi/css/materialdesignicons.min.css' %}"
+    />
+    <link rel="stylesheet" href="{% static 'vendors/aos/dist/aos.css/aos.css' %}" />
+
+    <!-- End plugin css for this page -->
+    <link rel="shortcut icon" href="{% static 'images/favicon.png' %}" />
+
+    <!-- inject:css -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <!-- endinject -->
+  </head>
+
+  <body>
+    <div class="container-scroller">
+      <div class="main-panel">
+        <!-- partial:partials/_navbar.html -->
+        <header id="header">
+          <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light">
+              <div class="navbar-bottom">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div>
+                    <a class="navbar-brand" href="{% url 'home'%}">
+                      <img src="{% static 'images/logo1.svg' %}" style="max-height: 100%; height: 50px;" alt="">
+                    </a>
+                  </div>
+                  <div>
+                    <button class="navbar-toggler" type="button" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                      <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="navbar-collapse justify-content-center collapse" id="navbarSupportedContent">
+                      <ul class="navbar-nav d-lg-flex justify-content-between align-items-center">
+                        <li>
+                          <button class="navbar-close">
+                            <i class="mdi mdi-close"></i>
+                          </button>
+                        </li>
+                        <li class="nav-item active">
+                          <a class="nav-link" href="{% url 'home' %}">BOSH SAHIFA</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="{% url 'category' category_id=3 %}">DUNYO</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="{% url 'category' category_id=4 %}">BEZNIS</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="{% url 'category' category_id=5 %}">SPORT</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="{% url 'category' category_id=6 %}">SAN'AT</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="{% url 'category' category_id=7 %}">SIYOSAT</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="{% url 'category' category_id=8 %}">SAYOHAT</a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <ul class="social-media">
+                    <li>
+                      <a href="#">
+                        <i class="mdi mdi-facebook"></i>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <i class="mdi mdi-youtube"></i>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <i class="mdi mdi-twitter"></i>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </nav>
+          </div>
+        </header>
+
+        <!-- partial -->
+        <div class="flash-news-banner">
+          <div class="container">
+            <div class="d-lg-flex align-items-center justify-content-between">
+              <div class="d-flex align-items-center">
+                <span class="badge badge-dark mr-3">Tezkor Habar</span>
+                <p class="mb-0">
+                  Lorem Ipsum has been the industry's standard dummy text ever
+                  since the 1500s.
+                </p>
+              </div>
+              <div class="d-flex">
+                <span class="mr-3 text-danger">Chor, Noyabr 17, 2020</span>
+                <span class="text-danger">10°C,Tashkent</span>
+              </div>
+            </div>
+          </div>
+	        {% block content %}
+	      
+	      {% endblock content %}
+        </div>
+      </div>
+    </div>
+	      
+	      
+	      <!-- partial:partials/_footer.html -->
+	      <footer>
+	      <div class="main-panel">
+          <div class="footer-top">
+            <div class="container">
+              <div class="row">
+                <div class="col-sm-5">
+
+                  <h5 class="font-weight-normal mt-4 mb-5">
+                    Bu gazeta Hilol academy, Ташкент. Hilol Academiy - yorqin kelajak sari harakat demakdir! ..
+	                  Hilol Academy - yorqin kelajak sari harakat demakdir! ...Hilol Academy - yorqin kelajak sari harakat demakdir!
+                  </h5>
+                  <ul class="social-media mb-3">
+                    <li>
+                      <a href="#">
+                        <i class="mdi mdi-facebook"></i>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <i class="mdi mdi-youtube"></i>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <i class="mdi mdi-twitter"></i>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="col-sm-4">
+                  <h3 class="font-weight-bold mb-3">OXIRGI MAQOLALAR</h3>
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <div class="footer-border-bottom pb-2">
+                        <div class="row">
+	                        {% for post in object_list %}
+	                      {% if 17 < forloop.counter0 and 21 > forloop.counter0 %}
+                          <div class="col-3">
+	                          {% if post.image %}
+	                          <a href="{% url 'post_detail' news_id=post.id %}">
+                            <img
+                              src="{{ post.image.url }}"
+                              alt="thumb"
+                              class="img-fluid"
+                              style="border-radius: 5px;"
+                            /></a>
+                          </div>
+                          <div class="col-9">
+	                          <a href="{% url 'post_detail' news_id=post.id %}" style="text-decoration: none; color: white">
+                            <h5 class="font-weight-600">
+                              {{ post.title | slice:": 50"}}
+                            </h5></a>
+	                          <hr style="width:100%;text-align:left;margin-left:0">
+                          </div>
+	                        {% endif %}
+                        {% endif %}
+                        {% endfor %}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <h3 class="font-weight-bold mb-3">KATEGORIYALAR</h3>
+                  <div class="footer-border-bottom pb-2">
+                    <div class="d-flex justify-content-between align-items-center">
+                      <h5 class="mb-0 font-weight-600"><a href="#" style="text-decoration: none; color: white">DUNYO</a></h5>
+	                    <a href="#" style="text-decoration: none; color: white"><div class="count">1</div></a>
+                    </div>
+                  </div>
+                  <div class="footer-border-bottom pb-2 pt-2">
+                    <div class="d-flex justify-content-between align-items-center">
+                      <h5 class="mb-0 font-weight-600"><a href="#" style="text-decoration: none; color: white">BEZNIS</a></h5>
+	                    <a href="#" style="text-decoration: none; color: white"><div class="count">1</div></a>
+                    </div>
+                  </div>
+                  <div class="footer-border-bottom pb-2 pt-2">
+                    <div class="d-flex justify-content-between align-items-center">
+                      <h5 class="mb-0 font-weight-600"><a href="#" style="text-decoration: none; color: white">SPORT</a></h5>
+	                    <a href="#" style="text-decoration: none; color: white"><div class="count">1</div></a>
+                    </div>
+                  </div>
+                  <div class="footer-border-bottom pb-2 pt-2">
+                    <div class="d-flex justify-content-between align-items-center">
+                      <h5 class="mb-0 font-weight-600"><a href="#" style="text-decoration: none; color: white">SAN'AT</a></h5>
+	                    <a href="#" style="text-decoration: none; color: white"><div class="count">1</div></a>
+                    </div>
+                  </div>
+                  <div class="pt-2">
+                    <div class="d-flex justify-content-between align-items-center">
+                      <h5 class="mb-0 font-weight-600"><a href="#" style="text-decoration: none; color: white">SIYOSAT</a></h5>
+	                    <a href="#" style="text-decoration: none; color: white"><div class="count">1</div></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="footer-bottom">
+            <div class="container">
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="d-sm-flex justify-content-between align-items-center">
+                    <div class="fs-14 font-weight-600">
+                      © 2021 <a href="https:t.me/@mukhtoroff99" target="_blank" class="text-white">@mukhtoroff99</a>. Xizmatlar litsenziyalangan.
+                    </div>
+                    <div class="fs-14 font-weight-600">
+                      Yaratildi... <a href="https://www.google.com/" target="_blank" class="text-white">Google azosi! "ANVARKHON"</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+	      </div>
+	      </footer>
+        <!-- partial -->
+    
+    <!-- inject:js -->
+    <script src="{% static 'vendors/js/vendor.bundle.base.js' %}"></script>
+    <!-- endinject -->
+    <!-- plugin js for this page -->
+    <script src="{% static 'vendors/aos/dist/aos.js/aos.js' %}"></script>
+    <!-- End plugin js for this page -->
+    <!-- Custom js for this page-->
+    <script src="{% static './js/demo.js' %}"></script>
+    <script src="{% static './js/jquery.easeScroll.js' %}"></script>
+    <!-- End custom js for this page-->
+  </body>
+</html>

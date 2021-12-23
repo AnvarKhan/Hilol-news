@@ -1,0 +1,7 @@
+<img
+  style="outline: none;"
+  src="{{ src }}"
+  {% if class_list %}
+  class="{% if class_list %}{{ class_list|join:' ' }}{% endif %}"
+  {% endif %}
+  {% include "bootstrap_navbar/attrs.html" with attrs=attrs %}>

@@ -1,0 +1,389 @@
+{% extends 'base.html '%}
+{% block content %}
+        <div class="content-wrapper">
+          <div class="container">
+            <div class="row" data-aos="fade-up">
+              <div class="col-xl-8 stretch-card grid-margin">
+	              {% for post in object_list %}
+                {% if forloop.counter0 < 1 %}
+                <div class="position-relative">
+	                {% if post.image %}
+                  <img
+                    src="{{ post.image.url }}"
+                    style="height: auto; border-radius: 5px;"
+                    alt="banner"
+                    class="img-fluid"
+                  />
+                  <div class="banner-content">
+                    <div class="badge badge-danger fs-12 font-weight-bold mb-3">
+                      Xalqaro yangiliklar
+                    </div>
+                    <h1 class="mb-2">
+                      <a class="nav-link" href="{% url 'post_detail' news_id=post.id %}" style="color: white">{{ post.title }}</a>
+                    </h1>
+                    <div class="fs-12">
+                      <span class="mr-2">Rasm yuklandi </span>{{ post.created_at }}
+                    </div>
+                  </div>
+                </div>
+	                    {% endif %}
+                    {% endif %}
+                {% endfor %}
+              </div>
+              <div class="col-xl-4 stretch-card grid-margin">
+                <div class="card bg-dark text-white">
+                  <div class="card-body">
+                    <h2>Eng so'ngi yangiliklar</h2>
+					{% for post in object_list %}
+                    {% if 4 < forloop.counter0 and 12 > forloop.counter0 %}
+                    <div
+                      class="d-flex border-bottom-blue pt-3 pb-4 align-items-center justify-content-between"
+                    >
+                      <div class="pr-3">
+                        <h5><a href="{% url 'post_detail' news_id=post.id %}" style="text-decoration: none;">{{ post.title | slice:":20"}}..</a></h5>
+                        <div class="fs-12">
+                          <span class="mr-2">Rasm yuklandi </span>{{ post.created_at }}
+                        </div>
+                      </div>
+                      <div class="rotate-img">
+	                      <a href="{% url 'post_detail' news_id=post.id %}">
+	                      {% if post.image %}
+                        <img
+                          src="{{ post.image.url }}"
+                          style="border-radius: 5px;"
+                          alt="thumb"
+                          class="img-fluid img-lg"
+                        /></a>
+                      </div>
+                    </div>
+						{% endif %}
+                    {% endif %}
+                  {% endfor %}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row" data-aos="fade-up">
+              <div class="col-lg-3 stretch-card grid-margin">
+                <div class="card">
+                  <div class="card-body">
+                    <h2>Kategoriyalar</h2>
+                    <ul class="vertical-menu">
+                      <li><a href="#">Siyosat</a></li>
+                      <li><a href="#">Halqaro</a></li>
+                      <li><a href="#">Moliya</a></li>
+                      <li><a href="#">Tabobat</a></li>
+                      <li><a href="#">Texnalogiya</a></li>
+                      <li><a href="#">Kasb-Xunar</a></li>
+                      <li><a href="#">Media</a></li>
+                      <li><a href="#">Adminstratatsiya</a></li>
+                      <li><a href="#">Sport</a></li>
+                      <li><a href="#">O'yin</a></li>
+                      <li><a href="#">San'at</a></li>
+                      <li><a href="#">Yoshlar uchun</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-9 stretch-card grid-margin">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="row">
+	                    {% for post in object_list %}
+                        {% if 11 < forloop.counter0 and 15 > forloop.counter0 %}
+                      <div class="col-sm-4 grid-margin">
+                        <div class="position-relative">
+                          <div class="rotate-img">
+	                          {% if post.image %}
+                            <a href="{% url 'post_detail' news_id=post.id %}">
+	                          <img
+                              src="{{ post.image.url }}" style="width:200px; height: 130px; border-radius: 5px;"
+                              alt="thumb"
+                              class="img-fluid"
+                            /></a>
+                          </div>
+                          <div class="badge-positioned">
+                            <a href="{% url 'post_detail' news_id=post.id %}" style="text-decoration: none; color: white;">
+	                            <span class="badge badge-danger font-weight-bold">Tezkor habar</span></a>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-sm-8  grid-margin">
+                        <h2 class="mb-2 font-weight-600">
+	                        <a href="{% url 'post_detail' news_id=post.id %}" style="text-decoration: none; color: #032a63">
+		                        {{ post.title | slice:":70" }}...</a>
+                        </h2>
+                        <div class="fs-13 mb-2">
+                          <span class="mr-2">Rasm yuklandi </span>{{ post.created_at }}
+                        </div>
+                        <p class="mb-0">
+                          {{ post.text | slice:":200"}}..
+                        </p>
+                      </div>
+	                    {% endif %}
+                        {% endif %}
+                    {% endfor %}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+	          
+            <div class="row" data-aos="fade-up">
+              <div class="col-sm-12 grid-margin">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-lg-8">
+                        <div class="card-title">
+                          Video
+                        </div>
+                        <div class="row">
+	                        {% for post in object_list %}
+	                        {% if 14 < forloop.counter0 and 17 > forloop.counter0 %}
+                          <div class="col-sm-6 grid-margin">
+                            <div class="position-relative">
+                              <div class="rotate-img">
+	                              {% if post.image %}
+	                              <a href="{% url 'post_detail' news_id=post.id %}">
+                                <img
+                                  src="{{ post.image.url }}"
+                                  style="border-radius: 5px;"
+                                  alt="thumb"
+                                  class="img-fluid"
+                                /></a>
+                              </div>
+                              <div class="badge-positioned w-90">
+                                <div class="d-flex justify-content-between align-items-center">
+                                  <a href="{% url 'post_detail' news_id=post.id %}" style="text-decoration: none; color:white;">
+	                                <span class="badge badge-danger font-weight-bold">
+		                                {{ post.category }}</span></a>
+                                  <div class="video-icon">
+                                    <i class="mdi mdi-play"></i>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+							{% endif %}
+		                    {% endif %}
+		                    {% endfor %}
+                        </div>
+                        <div class="row">
+	                        {% for post in object_list %}
+	                        {% if 16 < forloop.counter0 and 19 > forloop.counter0 %}
+                          <div class="col-sm-6 grid-margin">
+                            <div class="position-relative">
+                              <div class="rotate-img">
+	                              {% if post.image %}
+	                              <a href="{% url 'post_detail' news_id=post.id %}">
+                                <img
+                                  src="{{ post.image.url }}"
+                                  alt="thumb"
+                                  class="img-fluid"
+                                /></a>
+                              </div>
+                              <div class="badge-positioned w-90">
+                                <div class="d-flex justify-content-between align-items-center">
+                                  <a href="{% url 'post_detail' news_id=post.id %}" style="text-decoration: none; color:white;">
+	                                  <span class="badge badge-danger font-weight-bold">{{ post.category }}</span></a>
+                                  <div class="video-icon">
+                                    <i class="mdi mdi-play"></i>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+							{% endif %}
+		                    {% endif %}
+		                    {% endfor %}
+                        </div>
+                      </div>
+	                    
+                      <div class="col-lg-4">
+                        <div
+                          class="d-flex justify-content-between align-items-center"
+                        >
+                          <div class="card-title">
+                            Oxirgi ko'rilganlar
+                          </div>
+                          <p class="mb-3">Hammasini ko'rish</p>
+                        </div>
+	                      {% for post in object_list %}
+	                      {% if 18 < forloop.counter0 and 25 > forloop.counter0 %}
+                        <div class="d-flex justify-content-between align-items-center border-bottom pb-2">
+                          <div class="div-w-80 mr-3">
+                            <div class="rotate-img">
+		                            {% if post.image %}
+	                            <a href="{% url 'post_detail' news_id=post.id %}">
+                              <img
+                                src="{{ post.image.url }}"
+                                style="border-radius: 5px;"
+                                alt="thumb"
+                                class="img-fluid"
+                              /></a>
+                            </div>
+                          </div>
+                          <h3 class="font-weight-600 mb-0">
+	                          <a href="{% url 'post_detail' news_id=post.id %}" style="text-decoration: none; color: #032a63">
+		                          {{ post.title | slice:":30" }}..</a>
+                          </h3>
+                        </div>
+	                      {% endif %}
+                        {% endif %}
+                        {% endfor %}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row" data-aos="fade-up">
+              <div class="col-sm-12">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-xl-6">
+                        <div class="card-title">
+                          Siyosat habarlari
+                        </div>
+                        <div class="row">
+	                        {% for post in object_list %}
+	                      {% if 16 < forloop.counter0 and 18 > forloop.counter0 %}
+                          <div class="col-xl-6 col-lg-8 col-sm-6">
+                            <div class="rotate-img">
+	                            {% if post.image %}
+	                            <a href="{% url 'post_detail' news_id=post.id %}">
+                              <img
+                                src="{{ post.image.url }}"
+                                style="border-radius: 5px;"
+                                alt="thumb"
+                                class="img-fluid"
+                              /></a>
+                            </div>
+	                          <a href="{% url 'post_detail' news_id=post.id %}" style="text-decoration: none; color: #032a63;">
+                            <h2 class="mt-3 text-primary mb-2">
+                              {{ post.title | slice:":17"}}...
+                            </h2></a>
+                            <p class="fs-13 mb-1 text-muted">
+                              <span class="mr-2">Rasm yuklandi </span>{{ post.created_at }}
+                            </p>
+                            <p class="my-3 fs-15">
+                              {{ post.text | slice:":70"}}
+                            </p>
+                            <a href="{% url 'post_detail' news_id=post.id %}" style="text-decoration: none; color: #032a63;">
+                              Ko'proq ko'rish...</a
+                            >
+	                          
+                          </div>
+	                        {% endif %}
+	                        {% endif %}
+	                        {% endfor %}
+                          <div class="col-xl-6 col-lg-4 col-sm-6">
+	                          {% for post in object_list %}
+	                      {% if 23 < forloop.counter0 and 27 > forloop.counter0 %}
+                            <div class="border-bottom pb-3 mb-3">
+	                            <a href="{% url 'post_detail' news_id=post.id %}" style="text-decoration: none; color: #032a63;">
+                              <h3 class="font-weight-600 mb-0">
+                                {{ post.title | slice:":30" }}...
+                              </h3></a>
+                              <p class="fs-13 text-muted mb-0">
+                                <span class="mr-2">Rasm yuklandi </span>{{ post.created_at }}
+                              </p>
+                              <p class="mb-0">
+                                {{ post.text | slice:":35"}}
+	                              <a href="{% url 'post_detail' news_id=post.id %}" style="text-decoration: none; color: #032a63;">...</a>
+                              </p>
+                            </div>
+	                          {% endif %}
+	                        {% endfor %}
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-xl-6">
+                        <div class="row">
+                          <div class="col-sm-6">
+                            <div class="card-title">
+                              Sport habarlari
+                            </div>
+	                          {% for post in object_list %}
+	                      {% if 14 < forloop.counter0 and 17 > forloop.counter0 %}
+                            <div class="border-bottom pb-3">
+	                            
+                              <div class="rotate-img">
+	                              {% if post.image %}
+	                              <a href="{% url 'post_detail' news_id=post.id %}">
+                                <img
+                                  src="{{ post.image.url }}"
+                                  style="border-radius: 5px;"
+                                  alt="thumb"
+                                  class="img-fluid"
+                                /></a>
+                              </div>
+	                            <a href="{% url 'post_detail' news_id=post.id %}" style="text-decoration: none; color: #032a63;">
+                              <p class="fs-16 font-weight-600 mb-0 mt-3">
+                                {{ post.title | slice:":25"}}...
+                              </p></a>
+                              <p class="fs-13 text-muted mb-0">
+                                <span class="mr-2">Rasm yuklandi </span>{{ post.created_at }}
+                              </p>
+                            </div>
+	                          {% endif %}
+	                            {% endif %}
+	                            {% endfor %}
+                          </div>
+                          <div class="col-sm-6">
+                            <div class="card-title">
+                              Bayram yangiliklari
+                            </div>
+                            <div class="row">
+                              <div class="col-sm-12">
+                                <div class="border-bottom pb-3">
+                                  <div class="row">
+	                                  {% for post in object_list %}
+	                                  {% if 20 < forloop.counter0 and 25 > forloop.counter0 %}
+                                    <div class="col-sm-5 pr-2">
+                                      <div class="rotate-img">
+	                                      {% if post.image %}
+	                                      <a href="{% url 'post_detail' news_id=post.id %}">
+                                        <img
+                                          src="{{ post.image.url }}"
+                                          style="border-radius: 5px;"
+                                          alt="thumb"
+                                          class="img-fluid w-100"
+                                        /></a>
+                                      </div>
+                                    </div>
+                                    <div class="col-sm-7 pl-2">
+                                      <p class="fs-16 font-weight-600 mb-0">
+                                       <a href="{% url 'post_detail' news_id=post.id %}" style="text-decoration: none; color: #032a63;">
+	                                       {{ post.title | slice:":25"}} ...</a>
+                                      </p>
+                                      <p class="fs-13 text-muted mb-0">
+                                        <span class="mr-2">Rasm yuklandi </span>{{ post.created_at }}
+                                      </p>
+                                      <p class="mb-0 fs-13">
+                                      </p>
+                                    </div>
+	                                  {% endif %}
+	                                  {% endif %}
+	                                  {% endfor %}
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- main-panel ends -->
+        <!-- container-scroller ends -->
+{% endblock content %}
+        

@@ -1,0 +1,129 @@
+{% extends 'base.html' %}
+
+{% block content %}
+        <div class="content-wrapper">
+          <div class="container">
+            <div class="col-sm-12">
+              <div class="card" data-aos="fade-up">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <h1 class="mb-4 text-primary font-weight-600">
+	                      
+                        {{ st.name }}
+	                      
+                      </h1>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-8">
+                      <div class="row">
+	                      {% for i in asd %}
+	                      {% if forloop.counter0 < 5 %}
+                        <div class="col-sm-4 grid-margin">
+                          <div class="rotate-img">
+	                          {% if i.image %}
+	                          <a href="{% url 'post_detail' news_id=i.id %}" style="text-decoration: none; color: #032a63">
+                            <img
+                              src="{{ i.image.url }}"
+                              alt="banner"
+                              class="img-fluid"
+                              style="width:200px; height:150px;"
+                            /></a>
+                          </div>
+                        </div>
+                        <div class="col-sm-8 grid-margin">
+	                        <a href="{% url 'post_detail' news_id=i.id %}" style="text-decoration: none; color: #032a63">
+                          <h2 class="font-weight-600 mb-2">
+                            {{ i.title | slice:":250" }}
+                          </h2></a>
+                          <p class="fs-13 text-muted mb-0">
+                            <span class="mr-2"> Yuklandi... </span>{{ i.created_at }}
+                          </p>
+                          <p class="fs-15">
+	                          {{ i.text | slice:":400" }}
+	                        <hr style="width:100%;text-align:left;margin-left:0">
+                          </p>
+                        </div>
+	                      {% endif %}
+	                      {% endif %}
+	                      {% endfor %}
+                      </div>
+                    </div>
+                    <div class="col-lg-4">
+                      <h2 class="mb-4 text-primary font-weight-600">
+                        SO'NGGI YANGILIKLAR
+                      </h2>
+                      <div class="row">
+                        <div class="col-sm-12">
+                          <div class="border-bottom pb-4 pt-4">
+                            <div class="row">
+	                            {% for i in asd %}
+	                      {% if 3 > forloop.counter0 %}
+                              <div class="col-sm-8">
+	                              <a href="{% url 'post_detail' news_id=i.id %}" style="text-decoration: none; color: #032a63">
+                                <h5 class="font-weight-600 mb-1">
+                                  {{ i.title | slice:":47" }}..
+                                </h5></a>
+                                <p class="fs-13 text-muted mb-0">
+                                  <span class="mr-2">Yuklandi... </span>{{ i.created_at }}
+                                </p>
+                              </div>
+                              <div class="col-sm-4">
+                                <div class="rotate-img">
+	                                {% if i.image %}
+	                                <a href="{% url 'post_detail' news_id=i.id %}" style="text-decoration: none; color: #032a63">
+                                  <img
+                                    src="{{ i.image.url }}"
+                                    alt="banner"
+                                    class="img-fluid"
+                                  /></a>
+                                </div>
+                              </div>
+	                            {% endif %}
+	                            {% endif %}
+	                            {% endfor %}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+	                    
+                      <div class="trending">
+                        <h2 class="mb-4 text-primary font-weight-600">
+                          OMMABOP
+                        </h2>
+                        <div class="mb-4">
+	                        {% for i in asd %}
+	                      {% if 3 < forloop.counter0 and 7 > forloop.counter0 %}
+                          <div class="rotate-img">
+	                          {% if i.image %}
+	                          <a href="{% url 'post_detail' news_id=i.id %}" style="text-decoration: none; color: #032a63">
+                            <img
+                              src="{{ i.image.url }}"
+                              alt="banner"
+                              class="img-fluid"
+                              style="width:300px; height:200px;"
+                            /></a>
+                          </div>
+	                        <a href="{% url 'post_detail' news_id=i.id %}" style="text-decoration: none; color: #032a63">
+                          <h3 class="mt-3 font-weight-600">
+                            {{ i.title | slice:":67" }}..
+                          </h3></a>
+                          <p class="fs-13 text-muted mb-0">
+                            <span class="mr-2">Yuklandi... </span>{{ i.created_at }}
+                          </p>
+	                        <hr style="width:100%;text-align:left;margin-left:0">
+	                        {% endif %}
+	                      {% endif %}
+	                      {% endfor %}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+{% endblock content %}

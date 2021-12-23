@@ -1,0 +1,28 @@
+<nav
+  class="{% if class_list %}{{ class_list|join:' ' }} {% endif %}navbar navbar-expand-lg"
+  {% include 'bootstrap_navbar/attrs.html' with attrs=attrs %}>
+
+  {% if brand is not None %}
+    {{ brand.render }}
+  {% endif  %}
+
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbar-content"
+    aria-controls="navbar-content"
+    aria-expanded="false"
+    style="outline: none;"
+    aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbar-content">
+    {% if navgroups|length > 0 %}
+      {% for navgroup in navgroups %}
+        {{ navgroup.render }}
+      {% endfor %}
+    {% endif %}
+  </div>
+</nav>

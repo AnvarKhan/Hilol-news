@@ -1,0 +1,10 @@
+<a
+  class="navbar-brand{% if class_list %} {{ class_list|join:' ' }}{% endif %}"
+  style="outline: none;"
+  {% if href is not None %}href="{{ href }}"{% endif %}
+  {% include "bootstrap_navbar/attrs.html" with attrs=attrs %}>
+    {{ text }}
+    {% if image is not None %}
+      {{ image.render }}
+    {% endif %}
+</a>

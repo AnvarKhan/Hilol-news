@@ -1,0 +1,7 @@
+<div
+  class="{% if class_list %}{{ class_list|join:' ' }} {% endif %}navbar-nav"
+  {% include 'bootstrap_navbar/attrs.html' with attrs=attrs %}>
+  {% for navitem in navitems %}
+    {{ navitem.render }}
+  {% endfor %}
+</div>
